@@ -1,0 +1,42 @@
+<div class="card event-detail">
+
+  <div class="card-body">
+    <img ng-src={{item.coverImgUrl}}></img>
+    <div class="title" ng-show="item.attendeesCount >= 0" ng-bind="item.attendeesCount+' people are going'"></div>
+  </div>
+    
+  <div class="share-bar">
+    <a ng-class="{true:'btn-going', false:''}[item.myAttendance]" ng-click="clickGoing(item.id)">GOING</a>
+    <a uib-popover-template="'share-menu.html'" popover-placement="bottom" popover-btn>SHARE</a>
+    <script type="text/ng-template" id="share-menu.html">
+      <div>
+        <div><a class="link-btn" ng-click="sendmail()" popover-close>Email</a></div>
+        <div><a class="link-btn" clipboard ng-show="clipboardSupported" text="currentUrl" popover-close>Copy Link</a></div>
+        <div><a class="link-btn" ng-click="facebook()" popover-close>Facebook</a></div>
+      </div>
+    </script> 
+  </div>
+
+  <div class="card-body">
+    <div class="title nowrap" ng-bind="item.name"></div>
+
+    <div class="table-item">
+      {{item.fromDate | date:'MMM d, y'}}
+      <i class="fa fa-calendar fa-2x"></i>
+    </div>
+    <div class="table-item">
+      File Prentasi Vimala View
+      <i class="fa fa-map-marker fa-2x"></i>
+    </div>
+
+    <div class="descri" ng-bind-html="item.description"></div>
+    
+  </div>
+
+</div>
+
+<div class="spinner" ng-show="loading">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+</div>

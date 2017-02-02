@@ -1,0 +1,33 @@
+<div class="card">
+  
+  <div class="card-header bottom-line" ui-sref="tab.event({id: item.id})">
+    <div class="row">
+      <div class="col-xs-10">
+        <div class="title nowrap" ng-bind="item.name"></div>
+        <div class="date" ng-bind="item.fromDate | date:'MMM d, y'"></div>
+      </div>
+      <div class="col-xs-2 text-right">
+        <i class="fa fa-calendar"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body" ui-sref="tab.event({id: item.id})">
+    <div class="descri" ng-bind-html="item.description"></div>
+    <img ng-src={{item.coverImgUrl}}></img>
+    <div class="title" ng-show="item.attendeesCount >= 0" ng-bind="item.attendeesCount+' people are going'"></div>
+  </div>
+
+  <div class="share-bar">
+    <a ng-class="{true:'btn-going', false:''}[item.myAttendance]" ng-click="clickGoing(item.id)">GOING</a>
+    <a uib-popover-template="'share-menu.html'" popover-placement="{{$parent.$last?'top':'bottom'}}" popover-btn>SHARE</a>
+    <script type="text/ng-template" id="share-menu.html">
+      <div>
+        <div><a class="link-btn" ng-click="sendmail()" popover-close>Email</a></div>
+        <div><a class="link-btn" clipboard ng-show="clipboardSupported" text="currentUrl" popover-close>Copy Link</a></div>
+        <div><a class="link-btn" ng-click="facebook()" popover-close>Facebook</a></div>
+      </div>
+    </script> 
+  </div>
+
+</div>

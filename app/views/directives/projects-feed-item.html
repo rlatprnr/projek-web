@@ -1,0 +1,19 @@
+<div class="card" ui-sref="tab.project({id: item.id})">
+  
+  <div class="card-header bottom-line">
+    <div class="row">
+      <div class="col-xs-10">
+        <div class="title nowrap" ng-bind="item.title"></div>
+        <div class="date" ng-bind="item.createdAt | date:'MMM d, y'"></div>
+      </div>
+      <div class="col-xs-2 text-right">
+        <i class="fa fa-fort-awesome"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <img ng-src={{item.coverImgUrl}}></img>
+  </div>
+
+</div>

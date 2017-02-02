@@ -1,0 +1,16 @@
+<div class="card">
+
+  <div class="card-body">
+    <div ng-bind-html="item.body"></div>
+    <div class="title nowrap" ng-bind="item.title"></div>
+    <div class="date" ng-bind="item.createdAt | date:'MMM d, y'"></div>
+    <div class="descri" ng-bind="item.summary"></div>
+  </div>
+
+</div>
+
+<div class="spinner" ng-show="loading">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+</div>

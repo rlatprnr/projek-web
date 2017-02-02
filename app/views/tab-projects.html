@@ -1,0 +1,17 @@
+<div>
+  <div ng-repeat="item in projectItems">
+    <div ng-if="item._type==='ad'">
+      <ad-item item="item" ng-click="openBrowser(item.url)"/>
+    </div>
+    
+    <div ng-if="item._type==='projects'">
+      <projects-feed-item item="item"/>
+    </div>
+  </div>
+</div>
+  
+<div class="spinner" ng-show="loading">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+</div>

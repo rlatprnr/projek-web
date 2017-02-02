@@ -1,0 +1,28 @@
+{
+	"photos": [{
+		"src": "http://assets.projek.asia.s3.amazonaws.com/projeks/apl/vv/gallery/artimpression/artimpression1.jpg",
+		"w": 800,
+		"h": 428
+	}, {
+		"src": "http://assets.projek.asia.s3.amazonaws.com/projeks/apl/vv/gallery/artimpression/artimpression2.jpg",
+		"w": 800,
+		"h": 735
+	}, {
+		"src": "http://assets.projek.asia.s3.amazonaws.com/projeks/apl/vv/gallery/artimpression/artimpression3.jpg",
+		"w": 800,
+		"h": 483
+	}, {
+		"src": "http://assets.projek.asia.s3.amazonaws.com/projeks/apl/vv/gallery/artimpression/artimpression4.jpg",
+		"w": 1500,
+		"h": 597
+	}, {
+		"src": "http://assets.projek.asia.s3.amazonaws.com/projeks/apl/vv/gallery/artimpression/artimpression5.jpg",
+		"w": 800,
+		"h": 467
+	}, {
+		"src": "http://assets.projek.asia.s3.amazonaws.com/projeks/apl/vv/gallery/artimpression/artimpression6.jpg",
+		"w": 2600,
+		"h": 1116
+	}],
+	"videos": []
+}

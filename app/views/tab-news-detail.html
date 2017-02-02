@@ -1,0 +1,19 @@
+<div class="card">
+
+  <div class="card-body">
+    <img ng-src={{news.coverImgUrl}}></img>
+    <div class="title" ng-bind="news.title"></div>
+    <div class="descri" ng-bind-html="news.body"></div>
+    <div class="link" ng-if="news.url">
+      <div class="title">Sumber berita</div>
+      <a ng-click="openBrowser(news.url)" ng-bind="news.url"></a>
+    </div>
+  </div>
+
+</div>
+
+<div class="spinner" ng-show="loading">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+</div>

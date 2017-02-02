@@ -1,0 +1,50 @@
+<div class="login-container">
+  <div class="register-panel panel-controller">
+
+    <img class="logo" src="images/logo.png">    
+    <div class="title">Everybody Can Sell</div>
+    <div class="comment">Join Projek to discover the latest real estate deals. It's Free</div>
+
+    <div>
+      <a class="button apple-btn">Download on App Store</a>
+      <a class="button google-btn">Download on Google Play</a>
+    </div>
+
+    <div class="hr-sect">OR</div>
+
+    <form name="myForm" novalidate>
+      <div class="item item-input">
+        <div class="icon"><i class="fa fa-user"></i></div>        
+        <input type="text" placeholder="First Name" name="firstName" ng-model="form.firstName" required ng-minlength="3" ng-maxlength="30">
+        <i ng-show='myForm.firstName.$dirty && myForm.firstName.$invalid' class="error fa fa-times-circle fa-lg"></i>
+      </div>
+
+      <div class="item item-input">
+        <div class="icon"><i class="fa fa-user"></i></div>
+        <input type="text" placeholder="Last Name" name="lastName" ng-model="form.lastName" required ng-minlength="3" ng-maxlength="30">
+        <i ng-show='myForm.lastName.$dirty && myForm.lastName.$invalid' class="error fa fa-times-circle fa-lg"></i>
+      </div>
+
+      <div class="item item-input">
+        <div class="icon"><i class="fa fa-phone"></i></div>        
+        <span ng-show='helpPhone'>+62</span>
+        <input type="tel" placeholder="{{helpPhone ? '' : 'Mobile Phone'}}" name="phone" ng-focus='helpPhone=true' ng-change='phoneInput()' ng-model="form.tmpPhone" required ng-pattern="/^[0-9]{9,}$/">
+        <i ng-show='myForm.phone.$dirty && myForm.phone.$invalid' class="error fa fa-times-circle fa-lg"></i>
+      </div>
+
+      <div class="item item-input">
+        <div class="icon"><i class="fa fa-envelope-o"></i></div>        
+        <input type="email" placeholder="Email" name="inpEmail" ng-model="form.email" required>
+        <i ng-show='myForm.inpEmail.$dirty && myForm.inpEmail.$invalid' class="error fa fa-times-circle fa-lg"></i>
+      </div>
+    </form>
+
+    <div>
+      <a ng-disabled='submitted || myForm.$invalid' ng-click="regSubmit()" class="button submit-btn">REGISTER</a>
+    </div>
+    <div class="go-link">
+      Already have an account? <a ui-sref="login" class="link-btn">SIGN IN</a>
+    </div>
+
+  </div>
+</div>

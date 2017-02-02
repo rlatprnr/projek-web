@@ -1,0 +1,229 @@
+<header class="navbar-fixed-top">
+  <div ng-show="isMobile" class="app-download-container">
+    <a class="btn-close" ng-click="isMobile = false"><i class="fa fa-times" aria-hidden="true"></i></a>
+    Projek App
+    <a class="btn btn-sm btn-install">Install</a>
+    <a class="btn btn-sm btn-openapp">Open App</a>
+  </div>
+
+  <div class="container">
+    
+    <a class="title" href="#" popover-close>
+      <img src="images/title.png">
+    </a>
+
+    <ul class="nav navbar-nav" popover-close>
+      <li ui-sref-active="active">
+        <a ui-sref="tab.home">
+          <i class="icon fa fa-list-alt"></i>
+          <div>Home</div>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="tab.projects">
+          <i class="icon fa fa-fort-awesome"></i>
+          <div>Projects</div>
+          <div class="badge-icon" ng-show="badgeProjects>0">{{badgeProjects>10?"10+":badgeProjects}}</div>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="tab.events">
+          <i class="icon fa fa-calendar"></i>
+          <div>Events</div>
+          <div class="badge-icon" ng-show="badgeEvents>0">{{badgeEvents>10?"10+":badgeEvents}}</div>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="tab.updates">
+          <i class="icon fa fa-tasks"></i>
+          <div>Updates</div>
+          <div class="badge-icon" ng-show="badgeUpdates>0">{{badgeUpdates>10?"10+":badgeUpdates}}</div>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="tab.news">
+          <i class="icon fa fa-newspaper-o"></i>
+          <div>News</div>
+          <div class="badge-icon" ng-show="badgeNews>0">{{badgeNews>10?"10+":badgeNews}}</div>
+        </a>
+      </li>
+    </ul>
+
+    <div class="right-btn">
+      <a uib-popover-template="'userinfo.html'" popover-placement="bottom-right" popover-btn>
+        <img class="avatar" src="images/avatar.jpg">
+        <span class="menu-btn glyphicon glyphicon-option-vertical"></span>
+      </a>
+      <script type="text/ng-template" id="userinfo.html">
+        <div class="body">
+          <img class="avatar" ng-src="images/avatar.jpg">
+          <div class="userinfo">
+            <div class="name">{{member.firstName}} {{member.lastName}}</div>
+            <div class="email" ng-bind="member.email"></div>
+            <div class="contact link-btn">Terms & Conditions - Contact Us</div>
+            <div>
+              <a class="btn btn-sm" ng-click="openProfile()">Edit Profile</a></span>
+              <a class="btn btn-sm" ng-click="openAgent()">Enter Agent Info</a></span>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          {{version}}
+          <span class="pull-right"><a class="btn btn-sm" ng-click="logout()">Sign Out</a></span>
+        </div>
+      </script> 
+    </div>
+    
+
+  </div>
+
+</header>
+
+<div class="main-container" ng-class="{'showAppDownload':isMobile}" popover-close>
+  <div class="container">
+
+    <div class="right-container">
+
+      <div id="featured" class="featured-container text-left carousel slide" data-interval="3000" ng-show="hasFeatured && featuredProjects.length">
+        <div class="title">Hot products</div>
+        <div class="carousel-inner">
+          <div class="item" ng-repeat="project in featuredProjects track by $index" ng-class="{active:$index==0}">
+            <div class="feed" type="card">
+              <projects-feed-item item="project"/>
+            </div>
+          </div>
+        </div>
+        <a class="left carousel-control" href="#featured" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#featured" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </div>
+
+      <!-- <div ng-repeat="item in ads">
+        <ad-item item="item" ng-click="openBrowser(item.url)"/>
+      </div> -->
+      <ad-item item="ads[0]" ng-click="openBrowser(ads[0].destUrl)"/>
+    </div>
+
+    <div class="left-container">
+      <div name="tab-home" ui-view></div>
+      <div name="tab-projects" ui-view></div>
+      <div name="tab-events" ui-view></div>
+      <div name="tab-updates" ui-view></div>
+      <div name="tab-news" ui-view></div>
+      <div name="tab-detail" class="detail-container" ui-view></div>
+    </div>
+
+  </div>
+</div>
+
+<script type="text/ng-template" id="eidtProfile.html">
+  <div class="popup-container">
+    <div class="profile-panel panel-controller">
+
+      <a class="btn-close" ng-click="close()"><i class="fa fa-times" aria-hidden="true"></i></a>
+
+      <img class="logo" src="images/logo.png">    
+      <div class="title">Edit Profile</div>
+
+      <img class="avatar" ng-src="images/avatar.jpg">
+
+      <form name="myForm" novalidate>
+        <div class="item item-input">
+          <div class="icon"><i class="fa fa-user"></i></div>
+          <input type="text" placeholder="First Name" name="firstName" ng-model="user.firstName" required ng-minlength="3" ng-maxlength="30">
+          <i ng-show='myForm.firstName.$dirty && myForm.firstName.$invalid' class="error fa fa-times-circle fa-lg"></i>
+        </div>
+
+        <div class="item item-input">
+          <div class="icon"><i class="fa fa-user"></i></div>
+          <input type="text" placeholder="Last Name" name="lastName" ng-model="user.lastName" required ng-minlength="3" ng-maxlength="30">
+          <i ng-show='myForm.lastName.$dirty && myForm.lastName.$invalid' class="error fa fa-times-circle fa-lg"></i>
+        </div>
+
+        <div class="item item-input">
+          <div class="icon"><i class="fa fa-phone"></i></div>          
+          <span ng-show='helpPhone'>+62</span>
+          <input type="tel" placeholder="{{helpPhone ? '' : 'Mobile Phone'}}" name="phone" ng-focus='helpPhone=true' ng-change='phoneInput()' ng-model="user.tmpPhone" required ng-pattern="/^[0-9]{9,}$/">
+          <i ng-show='myForm.phone.$dirty && myForm.phone.$invalid' class="error fa fa-times-circle fa-lg"></i>
+        </div>
+
+        <div class="item item-input">
+          <div class="icon"><i class="fa fa-envelope-o"></i></div>          
+          <input type="email" placeholder="Email" name="inpEmail" ng-model="user.email" required>
+          <i ng-show='myForm.inpEmail.$dirty && myForm.inpEmail.$invalid' class="error fa fa-times-circle fa-lg"></i>
+        </div>
+      </form>
+
+      <div>
+        <a ng-disabled="myForm.$pristine || !myForm.$valid || sending" ng-click="submit()" class="button submit-btn">Save</a>
+      </div>
+
+    </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="agentInfo.html">
+  <div class="popup-container">
+    <div class="agent-panel panel-controller">
+
+      <a class="btn-close" ng-click="close()"><i class="fa fa-times" aria-hidden="true"></i></a>
+
+      <img class="logo" src="images/logo.png">    
+      <div class="title">Agent Information</div>
+
+      <form name="agentForm" novalidate>
+        <div class="item item-input">
+          <div class="icon"><i class="fa fa-user-secret"></i></div>          
+          <input type="number" string-to-number placeholder="Nomor KTP" name="govId" ng-model="agent.govId" required>
+          <i ng-show='agentForm.govId.$dirty && agentForm.govId.$invalid' class="error fa fa-times-circle"></i>
+        </div>
+
+        <div class="item item-input">
+          <div class="icon"><i class="fa fa-institution"></i></div>          
+          <input type="text" placeholder="Nama PT" name="companyName" ng-model="agent.companyName" ng-required='agent.officeName'>
+          <i ng-show='agentForm.companyName.$dirty && agentForm.companyName.$invalid' class="error fa fa-times-circle"></i>
+        </div>
+
+        <div class="item item-input">
+          <div class="icon"><i class="fa fa-briefcase"></i></div>          
+          <input type="text" placeholder="Nama kantor" name="officeName" ng-model="agent.officeName" ng-required='agent.companyName'>
+          <i ng-show='agentForm.officeName.$dirty && agentForm.officeName.$invalid' class="error fa fa-times-circle"></i>
+        </div>
+
+        <div class="item item-input">
+          <div class="icon"><i class="fa fa-building"></i></div>          
+          <input type="text" placeholder="Alamat kantor" name="officeAddress" ng-model="agent.officeAddress">
+          <i ng-show='agentForm.officeAddress.$dirty && agentForm.officeAddress.$invalid' class="error fa fa-times-circle"></i>
+        </div>
+
+        <div class="item item-input">
+          <div class="icon"><i class="fa fa-map-marker"></i></div>                    
+          <input type="text" placeholder="Kota" name="officeCity" ng-model="agent.officeCity">
+          <i ng-show='agentForm.officeCity.$dirty && agentForm.officeCity.$invalid' class="error fa fa-times-circle"></i>
+        </div>
+
+        <div class="item item-input">
+          <div class="icon"><i class="fa fa-globe"></i></div>          
+          <input type="text" placeholder="Provinsi" name="officeProvince" ng-model="agent.officeProvince">
+          <i ng-show='agentForm.officeProvince.$dirty && agentForm.officeProvince.$invalid' class="error fa fa-times-circle"></i>
+        </div>
+
+        <div class="item item-input">
+          <div class="icon"><i class="fa fa-phone"></i></div>          
+          <span ng-show='helpPhone' style='margin-right:6px;font-size:14px;font-weight:normal;'>+62</span>
+          <input type="tel" placeholder="{{helpPhone ? '' : 'Telephone kantor'}}" name="officePhone" ng-model="agent.tmpPhone" ng-change='phoneInput()' ng-focus='helpPhone=true' ng-pattern="/^[0-9]{9,}$/">
+          <i ng-show='agentForm.officePhone.$dirty && agentForm.officePhone.$invalid' class="error fa fa-times-circle"></i>
+        </div>
+      </form>
+
+      <div>
+        <a ng-disabled="agentForm.$pristine || !agentForm.$valid || sending" ng-click="submit()" class="button submit-btn">Save</a>
+      </div>
+
+    </div>
+  </div>
+</script>
+

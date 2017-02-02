@@ -1,0 +1,37 @@
+<div class="login-container">
+  <div class="verify-panel panel-controller">
+
+    <img class="logo" src="images/logo.png">    
+    <div class="title">Everybody Can Sell</div>
+    <div class="comment">Join Projek to discover the latest real estate deals. It's Free</div>
+
+    <div>
+      <a class="button apple-btn">Download on App Store</a>
+      <a class="button google-btn">Download on Google Play</a>
+    </div>
+
+    <div class="hr-sect">OR</div>
+
+    <!-- <div class="comment">Please enter the verification code sent to your {{method}}</div> -->
+
+    <form name="myForm" novalidate>
+      <div class="item item-input">
+        <div class="icon"><i class="fa fa-unlock-alt"></i></div>        
+        <input type="text" placeholder="Verification Code" name="code" ng-model="form.code" required>
+        <i ng-show='myForm.code.$dirty && myForm.code.$invalid' class="error fa fa-times-circle"></i>
+      </div>       
+    </form>
+
+    <div><a ng-disabled='sending || myForm.$invalid' ng-click="verify()" class="button submit-btn">VERIFY</a></div>
+    <div><a ng-disabled='sending' ng-click="resend()" class="button submit-btn resend-btn">RE-SEND</a></div>
+
+    <div class="go-link">
+      <a ng-click="useAlt()" class="link-btn">Send to {{altMethod}} instead</a>
+    </div>
+
+    <div class="go-link">
+      Already have an account? <a ui-sref="login" class="link-btn">SIGN IN</a>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="card project-detail">
+
+  <div class="card-body">
+    <img ng-src={{item.coverImgUrl}}></img>
+    <div class="title nowrap" ng-bind="item.title"></div>
+
+    <uib-tabset class="card-tabs" active="activePill" type="pills" justified="true">
+      <uib-tab index="0" heading="INTRO">
+        <div ng-click="showProjectItem(content)" ng-repeat="content in item.projectItems | orderBy:'+sort'" class="table-item">
+          {{content.title}}
+          <i class="fa fa-angle-right fa-2x"></i>
+        </div>
+      </uib-tab>
+
+      <uib-tab index="1" heading="UPDATES">
+        <div ng-repeat="update in item.updates">
+          <updates-feed-item item="update" project="item"/>
+        </div>
+      </uib-tab>
+
+      <uib-tab index="2" heading="GALLERY">
+        <div ng-click='showAttachment(attachment)' ng-repeat="attachment in item.attachments" class="table-item">
+          {{attachment.name}}
+          <i class="fa fa-eye fa-2x"></i>
+        </div>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+
+</div>
+
+<div class="spinner" ng-show="loading">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+</div>

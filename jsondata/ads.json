@@ -1,0 +1,21 @@
+{
+	"ads": [
+	{
+		"img": "https://rmarepo.richmediaads.com/2754/images/sh2-teaser-01-tablet.gif",
+		"url": "http://yahoo.com",
+		"w": 728,
+		"h": 90
+	},
+	{
+		"img": "https://www.mobileads.com/blog/wp-content/uploads/2015/11/mobile-ad-format-Alila-banner.gif",
+		"url": "http://assets.projek.asia.s3.amazonaws.com/projeks/news/teaser-cimb-niaga-1.jpg",
+		"w": 320,
+		"h": 50
+	},
+	{
+		"img": "http://assets.projek.asia.s3.amazonaws.com/projeks/news/teaser-cimb-niaga-1.jpg",
+		"url": "http://google.com",
+		"w": 800,
+		"h": 1000
+	}]
+}

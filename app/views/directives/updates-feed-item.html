@@ -1,0 +1,19 @@
+<div class="card" go-to-update-on-click="item">
+
+  <div class="card-header bottom-line">
+    <div class="row">
+      <div class="col-xs-10">
+        <div class="title nowrap">Update<span ng-if="project || item.project.id">:</span> {{project.title || item.project.title}}</div>
+        <div class="date" ng-bind="item.createdAt | date:'MMM d, y'"></div>
+      </div>
+      <div class="col-xs-2 text-right">
+        <i class="fa fa-tasks"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="descri" ng-bind="item.summary"></div>
+  </div>
+
+</div>

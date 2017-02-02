@@ -1,0 +1,24 @@
+<div>
+  <div infinite-scroll="fetchMore()" infinite-scroll-disabled="!canFetch || loading" infinite-scroll-distance="1" infinite-scroll-immediate-check="false">
+    <div ng-repeat="item in eventItems">
+      <div ng-if="item._type==='ad'">
+	      <ad-item item="item" ng-click="openBrowser(item.url)"/>
+	    </div>
+	    
+	    <div ng-if="item._type==='events'">
+	      <events-feed-item item="item"/>
+	    </div>
+    </div>
+
+    <div class="text-center not-items" ng-show="loading==false && eventItems.length==0">
+    	<div>There are no upcoming events. Please check back later.</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="spinner" ng-show="loading">
+	<div class="bounce1"></div>
+	<div class="bounce2"></div>
+	<div class="bounce3"></div>
+</div>

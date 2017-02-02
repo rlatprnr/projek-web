@@ -1,0 +1,40 @@
+<div class="login-container">
+  <div class="login-panel panel-controller">
+
+    <img class="logo" src="images/logo.png">    
+    <div class="title">Everybody Can Sell</div>
+    <div class="comment">Join Projek to discover the latest real estate deals. It's Free</div>
+
+    <div>
+      <a class="button apple-btn">Download on App Store</a>
+      <a class="button google-btn">Download on Google Play</a>
+    </div>
+
+    <div class="hr-sect">OR</div>
+
+    <form name="myForm" novalidate>
+    	<div ng-show='useEmail' class="item item-input">
+        <div class="icon"><i class="fa fa-envelope-o"></i></div>        
+        <input type="email" placeholder="Email" name="email" ng-model="form.email" ng-focus='form.tmpPhone=null;helpPhone=null'>
+        <i ng-show='myForm.email.$dirty && myForm.email.$invalid' class="error fa fa-times-circle fa-lg"></i>
+      </div>
+
+      <div ng-show='useEmail && usePhone'>OR</div>
+
+      <div ng-show='usePhone' class="item item-input">
+        <div class="icon"><i class="fa fa-phone"></i></div>        
+        <span ng-show='helpPhone'>+62</span>
+        <input type="tel" placeholder="{{helpPhone ? '' : 'Mobile Phone'}}" name="phone" ng-focus='form.email=null;helpPhone=true' ng-change='phoneInput()' ng-model="form.tmpPhone" required ng-pattern="/^[0-9]{9,}$/">
+        <i ng-show='myForm.phone.$dirty && myForm.phone.$invalid' class="error fa fa-times-circle fa-lg"></i>
+      </div>          
+    </form>
+
+    <div>
+      <a ng-disabled='(!form.email && !form.phone) || sending' ng-click="login()" class="button submit-btn">SIGN IN</a>
+    </div>
+    <div class="go-link">
+      Need an Account? <a ui-sref="register" class="link-btn">REGISER</a>
+    </div>
+
+  </div>
+</div>
